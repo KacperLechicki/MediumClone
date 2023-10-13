@@ -1,0 +1,29 @@
+@import './variables';
+
+@mixin control {
+  padding: 7px 17px;
+  border: 1px solid $control-border;
+  border-radius: $border-radius;
+  color: $white;
+  background-color: $palette-dark-blue;
+  transition: border-color 0.1s;
+
+  &:focus {
+    outline: none;
+    border-color: $palette-light-blue;
+  }
+
+  &:hover {
+    outline: none;
+    border-color: $palette-mid-blue;
+
+    &:focus {
+      outline: none;
+      border-color: $palette-light-blue;
+    }
+  }
+
+  &::placeholder {
+    color: rgba($color: $white, $alpha: 0.5);
+  }
+}

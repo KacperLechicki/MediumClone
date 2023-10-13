@@ -1,0 +1,38 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
+.component,
+.component.primary {
+  padding: 7px 17px;
+  width: fit-content;
+  background: $palette-mid-blue;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  .icon {
+    margin-right: 5px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: $white;
+  }
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+}
+
+.component.secondary {
+  background: transparent;
+  border: 1px solid $white;
+}
+
+.component.pill {
+  border-radius: 50px;
+}

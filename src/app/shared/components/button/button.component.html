@@ -1,0 +1,7 @@
+<div class="component" (click)="emitClick()"
+  [ngClass]="{'primary': style === 'primary', 'secondary': style === 'secondary', 'pill': style === 'pill'}">
+  <i class="icon fa-solid {{icon}}"></i>
+  <button [type]="type">
+    {{label}}
+  </button>
+</div>

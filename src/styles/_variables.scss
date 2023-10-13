@@ -1,0 +1,28 @@
+////////////////////////////////////////////////////////////////
+//COLORS
+$white: white;
+$black: black;
+
+$palette-dark: #0c0d14;
+$palette-dark-blue: #23395b;
+$palette-mid-blue: #406e8e;
+$palette-light-blue: #8ea8c3;
+$palette-light: #cbf7ed;
+
+$link-blue: #406e8e;
+
+$control-border: rgba(
+  $color: $white,
+  $alpha: 0.3,
+);
+$control-focus: rgb(81, 106, 182);
+
+//spacing
+$gap-sm: 10px;
+$gap: 20px;
+$gap-lg: 30px;
+
+////////////////////////////////////////////////////////////////
+//BORDERS
+$border-radius: 5px;
+////////////////////////////////////////////////////////////////

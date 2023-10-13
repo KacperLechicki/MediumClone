@@ -1,0 +1,12 @@
+@import 'src/styles/_mixins.scss';
+
+.component {
+  width: 100%;
+
+  .control {
+    @include control;
+    margin-bottom: $gap;
+    width: 100%;
+    height: 40px;
+  }
+}
