@@ -1,5 +1,5 @@
-<div class="component" (click)="emitClick()"
-  [ngClass]="{'primary': style === 'primary', 'secondary': style === 'secondary', 'pill': style === 'pill', 'disabled': isDisabled}">
+<div class="component {{customClass}}" (click)="emitClick()"
+  [ngClass]="{'primary': style === 'primary', 'secondary': style === 'secondary', 'error-pill': style === 'error-pill', 'pill': style === 'pill', 'disabled': isDisabled}">
   <i class="icon fa-solid {{icon}}"></i>
   <button [type]="type" [disabled]="isDisabled">
     {{label}}

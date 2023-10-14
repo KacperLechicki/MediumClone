@@ -13,8 +13,9 @@ export class ButtonComponent {
   @Input() type!: 'submit' | 'button';
   @Input() label!: string;
   @Input() icon!: string;
-  @Input() style!: 'primary' | 'secondary' | 'pill';
+  @Input() style!: 'primary' | 'secondary' | 'pill' | 'error-pill';
   @Input() isDisabled!: Observable<boolean> | boolean | null;
+  @Input() customClass!: string;
 
   @Output() btnClick = new EventEmitter<MouseEvent>();
 

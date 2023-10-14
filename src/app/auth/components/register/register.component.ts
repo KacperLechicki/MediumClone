@@ -47,4 +47,8 @@ export class RegisterComponent {
 
     this.store.dispatch(authActions.register({ request }));
   }
+
+  protected reset(): void {
+    this.form.reset();
+  }
 }

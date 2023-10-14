@@ -37,6 +37,11 @@
   border-radius: 50px;
 }
 
+.component.error-pill {
+  border-radius: 50px;
+  background: $error;
+}
+
 .component.disabled {
   filter: grayscale(1);
   cursor: auto;
