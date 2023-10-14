@@ -1,12 +1,64 @@
 @import 'src/styles/_mixins.scss';
 
 .component {
+  margin-bottom: $gap-sm;
   width: 100%;
 
-  .control {
-    @include control;
-    margin-bottom: $gap;
+  .input-container {
+    position: relative;
     width: 100%;
     height: 40px;
+
+    .control {
+      @include control;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      &.iconContainer {
+        padding-left: 35px;
+      }
+    }
+
+    .clear {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 100%;
+      background-color: inherit;
+      z-index: 100;
+      cursor: pointer;
+    }
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      margin-left: 5px;
+      width: 25px;
+      height: 60%;
+      background-color: inherit;
+      z-index: 100;
+      border-right: 1px solid $white;
+    }
   }
+
+  .error {
+    visibility: hidden;
+  }
+}
+
+.visible {
+  visibility: visible;
 }

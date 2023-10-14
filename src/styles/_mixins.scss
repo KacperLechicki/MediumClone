@@ -6,6 +6,7 @@
   border-radius: $border-radius;
   color: $white;
   background-color: $palette-dark-blue;
+  box-shadow: inset 2px 4px rgba($color: $black, $alpha: 0.15);
   transition: border-color 0.1s;
 
   &:focus {
@@ -25,5 +26,9 @@
 
   &::placeholder {
     color: rgba($color: $white, $alpha: 0.5);
+  }
+
+  &.ng-invalid.ng-touched {
+    border: 1px solid $error-border;
   }
 }

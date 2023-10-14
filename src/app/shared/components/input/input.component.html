@@ -1,3 +1,14 @@
 <fieldset [formGroup]="formGroup" class="component">
-  <input [formControlName]="controlName" class="control" [type]="type" [placeholder]="placeholder">
+  <div class="input-container">
+    <div *ngIf="icon" class="icon">
+      <i class="fa-solid {{icon}}"></i>
+    </div>
+    <input [ngClass]="{'iconContainer': icon}" [formControlName]="controlName" class="control" [type]="type"
+      [placeholder]="placeholder">
+    <div *ngIf="clearable" class="clear" (click)="clear()">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+  </div>
+  <app-error-control class="error" [ngClass]="{'visible': control.invalid && control.touched}"
+    [message]="errorMessage"></app-error-control>
 </fieldset>

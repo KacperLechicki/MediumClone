@@ -13,15 +13,15 @@
 
           <div class="form-container__body">
             <form [formGroup]="form">
-              <app-input [type]="'text'" [placeholder]="'Username'" [formGroup]="form"
-                [controlName]="'username'"></app-input>
-              <app-input [type]="'email'" [placeholder]="'Email'" [formGroup]="form"
-                [controlName]="'email'"></app-input>
-              <app-input [type]="'password'" [placeholder]="'Password'" [formGroup]="form"
-                [controlName]="'password'"></app-input>
+              <app-input [type]="'text'" [placeholder]="'Username'" [formGroup]="form" [controlName]="'username'"
+                [clearable]="true" [icon]="'fa-user'"></app-input>
+              <app-input [type]="'email'" [placeholder]="'Email'" [formGroup]="form" [controlName]="'email'"
+                [clearable]="true" [icon]="'fa-at'"></app-input>
+              <app-input [type]="'password'" [placeholder]="'Password'" [formGroup]="form" [controlName]="'password'"
+                [clearable]="true" [icon]="'fa-lock'"></app-input>
 
-              <app-button [label]="'Sign up'" [icon]="'fa-right-to-bracket'" [style]="'pill'"
-                (btnClick)="submit()"></app-button>
+              <app-button [label]="'Sign up'" [icon]="'fa-right-to-bracket'" [style]="'pill'" (btnClick)="submit()"
+                [isDisabled]="isSubmitting$ | async"></app-button>
             </form>
           </div>
 
@@ -30,3 +30,5 @@
     </div>
   </div>
 </div>
+
+<app-spinner [condition]="isSubmitting$ | async"></app-spinner>

@@ -1,0 +1,6 @@
+@import 'src/styles/_variables.scss';
+
+.component {
+  font-size: 1.2rem;
+  color: rgba($color: $error, $alpha: 0.8);
+}

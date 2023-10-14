@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-button',
@@ -13,6 +14,7 @@ export class ButtonComponent {
   @Input() label!: string;
   @Input() icon!: string;
   @Input() style!: 'primary' | 'secondary' | 'pill';
+  @Input() isDisabled!: Observable<boolean> | boolean | null;
 
   @Output() btnClick = new EventEmitter<MouseEvent>();
 

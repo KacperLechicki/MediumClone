@@ -1,0 +1,23 @@
+@import 'src/styles/_variables.scss';
+
+.spinner-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: $black, $alpha: 0.15);
+  z-index: 1000;
+  pointer-events: none;
+  user-select: none;
+
+  transition: all 0.3s;
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+  }
+}

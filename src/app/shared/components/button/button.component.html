@@ -1,7 +1,7 @@
 <div class="component" (click)="emitClick()"
-  [ngClass]="{'primary': style === 'primary', 'secondary': style === 'secondary', 'pill': style === 'pill'}">
+  [ngClass]="{'primary': style === 'primary', 'secondary': style === 'secondary', 'pill': style === 'pill', 'disabled': isDisabled}">
   <i class="icon fa-solid {{icon}}"></i>
-  <button [type]="type">
+  <button [type]="type" [disabled]="isDisabled">
     {{label}}
   </button>
 </div>

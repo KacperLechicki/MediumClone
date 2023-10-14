@@ -13,13 +13,14 @@
     margin-bottom: $gap-sm;
 
     h1 {
+      margin-bottom: 0;
       text-align: center;
       font-size: 4rem;
     }
 
     p {
       text-align: center;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
 
       a {
         color: $palette-light-blue;

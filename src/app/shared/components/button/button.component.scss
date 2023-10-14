@@ -36,3 +36,16 @@
 .component.pill {
   border-radius: 50px;
 }
+
+.component.disabled {
+  filter: grayscale(1);
+  cursor: auto;
+
+  &:hover {
+    filter: grayscale(1);
+  }
+
+  &:active {
+    filter: grayscale(1);
+  }
+}
