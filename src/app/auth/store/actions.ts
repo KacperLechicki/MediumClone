@@ -9,11 +9,11 @@ export const authActions = createActionGroup({
   events: {
     Register: props<{ request: RegisterRequestInterface }>(),
     'Register Success': props<{ currentUser: CurrentUserInterface }>(),
-    'Register Failure': props<{errors: ValidationErrorInterface}>(),
+    'Register Failure': props<{ errors: ValidationErrorInterface }>(),
 
     Login: props<{ request: LoginRequestInterface }>(),
     'Login Success': props<{ currentUser: CurrentUserInterface }>(),
-    'Login Failure': emptyProps(),
+    'Login Failure': props<{ errors: ValidationErrorInterface }>(),
 
     'Get Current User': emptyProps(),
     'Get Current User Success': props<{ currentUser: CurrentUserInterface }>(),

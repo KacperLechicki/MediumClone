@@ -77,8 +77,12 @@ export const loginEffect = createEffect(
             persistanceService.set('accessToken', currentUser.token);
             return authActions.loginSuccess({ currentUser });
           }),
-          catchError(() => {
-            return of(authActions.loginFailure());
+          catchError((errors: HttpErrorResponse) => {
+            return of(
+              authActions.registerFailure({
+                errors: errors.error.errors,
+              })
+            );
           })
         );
       })

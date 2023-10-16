@@ -46,6 +46,7 @@ const authFeature = createFeature({
       (state: AuthStateInterface): AuthStateInterface => ({
         ...state,
         isSubmitting: true,
+        validationErrors: null,
       })
     ),
 
@@ -55,6 +56,7 @@ const authFeature = createFeature({
         ...state,
         isSubmitting: false,
         currentUser: action.currentUser,
+        validationErrors: null,
       })
     ),
 
@@ -63,6 +65,7 @@ const authFeature = createFeature({
       (state: AuthStateInterface, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
+        validationErrors: action.errors,
       })
     ),
 

@@ -2,6 +2,10 @@
 
 .alert {
   margin-top: $gap;
+
+  ul {
+    margin-bottom: 0;
+  }
 }
 
 .alert-danger {
