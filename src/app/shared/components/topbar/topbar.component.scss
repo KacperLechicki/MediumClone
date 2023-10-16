@@ -1,0 +1,77 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  font-size: 1.6rem;
+  background-color: $palette-dark;
+  border-bottom: 1px solid rgba($color: $white, $alpha: 0.15);
+  z-index: 9999;
+
+  .container {
+    height: 100%;
+
+    .navbar-brand {
+      font-size: 2rem;
+      font-weight: 600;
+
+      span {
+        font-weight: normal;
+        color: $palette-light-blue;
+      }
+    }
+
+    .navbar-nav {
+      .wide {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        list-style: none;
+
+        @media only screen and (max-width: 768px) {
+          display: none;
+        }
+
+        @include navItem;
+      }
+
+      .short {
+        @media only screen and (min-width: 768px) {
+          display: none;
+        }
+
+        @include navItem;
+
+        ion-icon {
+          margin-right: 7px;
+          margin-bottom: 2px;
+          font-size: 2.4rem;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+ion-icon {
+  margin-right: 7px;
+  margin-bottom: 2px;
+  font-size: 1.8rem;
+  color: $white;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  padding-left: 0;
+  list-style: none;
+
+  @include navItem;
+}

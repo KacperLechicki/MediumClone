@@ -1,0 +1,11 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" [id]="name" [attr.aria-labelledby]="name + 'Label'">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" [id]="name + 'Label'">{{title}}</h5>
+    <button #closeButton type="button" class="button-close" data-bs-dismiss="offcanvas">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <ng-content></ng-content>
+  </div>
+</div>

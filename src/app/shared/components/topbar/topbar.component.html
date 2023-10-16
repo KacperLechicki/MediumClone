@@ -1,0 +1,93 @@
+<ng-container *ngIf="data$ | async as data">
+  <nav class="navbar navbar-dark">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand">Medium<span>Clone</span></a>
+      <ul class="nav navbar-nav pull-xs-right">
+        <div class="wide">
+          <ng-container *ngIf="data.currentUser">
+            <li class="nav-item">
+              <a routerLink="/articles/new" class="nav-link">
+                <ion-icon name="create-outline"></ion-icon>
+                New Post
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/settings" class="nav-link">
+                <ion-icon name="settings-outline"></ion-icon>
+                Settings
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
+
+                <img class="user-pic" [src]="data.currentUser.image" />
+                {{data.currentUser.username}}
+              </a>
+            </li>
+          </ng-container>
+          <ng-container *ngIf="data.currentUser === null">
+            <li class="nav-item">
+              <a routerLink="/login" class="nav-link">
+                Sign in
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/register" class="nav-link">
+                Sign up
+              </a>
+            </li>
+          </ng-container>
+        </div>
+
+        <div class="short">
+          <ng-container *ngIf="data.currentUser || data.currentUser === null">
+            <li class="nav-item">
+              <a class="nav-link" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <ion-icon name="menu-outline"></ion-icon>
+              </a>
+            </li>
+          </ng-container>
+        </div>
+      </ul>
+    </div>
+  </nav>
+</ng-container>
+
+<app-side-menu [name]="'offcanvasNavbar'" [title]="'Menu'" *ngIf="data$ | async as data">
+  <ng-container *ngIf="data.currentUser">
+    <ul class="mobile-menu-content">
+      <li class="nav-item mobile">
+        <a routerLink="/articles/new" class="nav-link">
+          <ion-icon name="create-outline"></ion-icon>
+          New Post
+        </a>
+      </li>
+      <li class="nav-item mobile">
+        <a routerLink="/settings" class="nav-link">
+          <ion-icon name="settings-outline"></ion-icon>
+          Settings
+        </a>
+      </li>
+      <li class="nav-item mobile">
+        <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
+
+          <img class="user-pic" [src]="data.currentUser.image" />
+          {{data.currentUser.username}}
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-container *ngIf="data.currentUser === null">
+    <li class="nav-item mobile">
+      <a routerLink="/login" class="nav-link">
+        Sign in
+      </a>
+    </li>
+    <li class="nav-item mobile">
+      <a routerLink="/register" class="nav-link">
+        Sign up
+      </a>
+    </li>
+  </ng-container>
+</app-side-menu>

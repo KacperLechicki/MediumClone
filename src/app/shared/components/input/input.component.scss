@@ -46,6 +46,7 @@
       left: 0;
       transform: translateY(-50%);
       margin-left: 5px;
+      padding-right: 5px;
       width: 25px;
       height: 60%;
       background-color: inherit;
@@ -61,4 +62,9 @@
 
 .visible {
   visibility: visible;
+}
+
+ion-icon {
+  color: $white;
+  font-size: 1.8rem;
 }

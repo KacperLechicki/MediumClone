@@ -60,6 +60,32 @@ const authFeature = createFeature({
         ...state,
         isSubmitting: false,
       })
+    ),
+
+    on(
+      authActions.getCurrentUser,
+      (state: AuthStateInterface): AuthStateInterface => ({
+        ...state,
+        isLoading: true,
+      })
+    ),
+
+    on(
+      authActions.getCurrentUserSuccess,
+      (state: AuthStateInterface, action): AuthStateInterface => ({
+        ...state,
+        isLoading: false,
+        currentUser: action.currentUser,
+      })
+    ),
+
+    on(
+      authActions.getCurrentUserFailure,
+      (state: AuthStateInterface): AuthStateInterface => ({
+        ...state,
+        isLoading: false,
+        currentUser: null,
+      })
     )
   ),
 });
@@ -68,4 +94,5 @@ export const {
   name: authFeatureKey,
   reducer: authReducer,
   selectIsSubmitting,
+  selectCurrentUser,
 } = authFeature;

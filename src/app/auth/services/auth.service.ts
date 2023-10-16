@@ -17,6 +17,11 @@ export class AuthService {
     return response.user;
   }
 
+  public getCurrentUser(): Observable<CurrentUserInterface> {
+    const url = constantVariables.backendApiUrl + '/user';
+    return this.http.get<AuthResponseInterface>(url).pipe(map(this.getUser));
+  }
+
   public register(
     data: RegisterRequestInterface
   ): Observable<CurrentUserInterface> {

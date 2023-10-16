@@ -1,0 +1,30 @@
+@import 'src/styles/_variables.scss';
+
+.offcanvas {
+  color: $white;
+  background: $palette-dark;
+  border-left: 1px solid rgba($color: $palette-light-blue, $alpha: 0.15);
+
+  .offcanvas-header {
+    margin-top: 75px;
+    padding: 20px;
+
+    .offcanvas-title {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .button-close {
+      background: none;
+      border: none;
+
+      ion-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.2rem;
+        color: $white;
+      }
+    }
+  }
+}

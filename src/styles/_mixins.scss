@@ -1,4 +1,5 @@
 @import './variables';
+@import './variables';
 
 @mixin control {
   padding: 7px 17px;
@@ -30,5 +31,60 @@
 
   &.ng-invalid.ng-touched {
     border: 1px solid $error-border;
+  }
+}
+
+@mixin navItem {
+  .nav-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @media only screen and (max-width: 768px) {
+      &.mobile {
+        padding: 7px 10px;
+        width: 100%;
+        border-radius: $border-radius;
+        transition: background-color 0.1s;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba($color: $palette-light-blue, $alpha: 0.15);
+        }
+
+        &:active {
+          background: rgba($color: $palette-light-blue, $alpha: 0.25);
+        }
+      }
+    }
+
+    .nav-link {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      max-width: 180px;
+      white-space: wrap;
+      word-break: break-all;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    img {
+      margin-right: 7px;
+      max-height: 22px;
+      border-radius: 50%;
+    }
+
+    .navbar-toggler {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+
+      ion-icon {
+        margin: 0;
+      }
+    }
   }
 }

@@ -1,12 +1,12 @@
 <fieldset [formGroup]="formGroup" class="component">
   <div class="input-container">
     <div *ngIf="icon" class="icon">
-      <i class="fa-solid {{icon}}"></i>
+      <ion-icon name="{{icon}}"></ion-icon>
     </div>
     <input [ngClass]="{'iconContainer': icon}" [formControlName]="controlName" class="control" [type]="type"
       [placeholder]="placeholder">
     <div *ngIf="clearable" class="clear" (click)="clear()">
-      <i class="fa-solid fa-xmark"></i>
+      <ion-icon name="close-outline"></ion-icon>
     </div>
   </div>
   <app-error-control class="error" [ngClass]="{'visible': control.invalid && control.touched}"

@@ -3,6 +3,8 @@
 
 .component,
 .component.primary {
+  display: flex;
+  align-items: center;
   padding: 7px 17px;
   width: fit-content;
   background: $palette-mid-blue;
@@ -53,4 +55,10 @@
   &:active {
     filter: grayscale(1);
   }
+}
+
+ion-icon {
+  margin-bottom: 2px;
+  color: $white;
+  font-size: 1.8rem;
 }

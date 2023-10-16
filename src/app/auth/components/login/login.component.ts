@@ -39,12 +39,14 @@ export class LoginComponent {
   ) {}
 
   protected submit(): void {
+   if (this.form.valid) {
     this.form.markAllAsTouched();
     const request: LoginRequestInterface = {
       user: this.form.getRawValue(),
     };
 
     this.store.dispatch(authActions.login({ request }));
+   }
   }
 
   protected reset(): void {

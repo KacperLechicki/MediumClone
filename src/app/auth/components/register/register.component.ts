@@ -40,12 +40,14 @@ export class RegisterComponent {
   ) {}
 
   protected submit(): void {
-    this.form.markAllAsTouched();
-    const request: RegisterRequestInterface = {
-      user: this.form.getRawValue(),
-    };
+    if (this.form.valid) {
+      this.form.markAllAsTouched();
+      const request: RegisterRequestInterface = {
+        user: this.form.getRawValue(),
+      };
 
-    this.store.dispatch(authActions.register({ request }));
+      this.store.dispatch(authActions.register({ request }));
+    }
   }
 
   protected reset(): void {

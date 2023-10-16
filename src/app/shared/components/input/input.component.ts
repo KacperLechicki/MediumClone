@@ -6,11 +6,17 @@ import {
 } from '@angular/forms';
 import { ErrorControlComponent } from '../../templates/error-control/error-control.component';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [ReactiveFormsModule, ErrorControlComponent, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    ErrorControlComponent,
+    CommonModule,
+    IonicModule,
+  ],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
