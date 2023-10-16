@@ -7,9 +7,15 @@ import { RegisterRequestInterface } from '../../types/registerRequest.interface'
 import { RouterLink } from '@angular/router';
 import { AuthStateInterface } from '../../types/authState.interface';
 import { CommonModule } from '@angular/common';
-import { selectIsSubmitting } from '../../store/reducers';
+import {
+  selectIsSubmitting,
+  selectValidationErrors,
+} from '../../store/reducers';
 import { authActions } from '../../store/actions';
 import { SpinnerComponent } from 'src/app/shared/templates/spinner/spinner.component';
+import { combineLatest } from 'rxjs';
+import { AlertComponent } from 'src/app/shared/templates/alert/alert.component';
+import { ValidationErrorInterface } from '../../types/validationError.interface';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +29,7 @@ import { SpinnerComponent } from 'src/app/shared/templates/spinner/spinner.compo
     RouterLink,
     CommonModule,
     SpinnerComponent,
+    AlertComponent,
   ],
 })
 export class RegisterComponent {
@@ -32,7 +39,10 @@ export class RegisterComponent {
     password: ['', Validators.required],
   });
 
-  protected isSubmitting$ = this.store.select(selectIsSubmitting);
+  protected data$ = combineLatest({
+    isSubmitting: this.store.select(selectIsSubmitting),
+    validationErrors: this.store.select(selectValidationErrors),
+  });
 
   constructor(
     private fb: FormBuilder,

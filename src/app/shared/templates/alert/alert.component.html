@@ -1,0 +1,12 @@
+<div class="alert"
+  [ngClass]="{'alert-danger': type === 'danger', 'alert-success': type === 'success', 'alert-warning': type === 'warning', 'alert-info': type === 'info'}"
+  role="alert">
+  <ng-content></ng-content>
+  <ng-container *ngIf="contentType === 'validationErrors' && content">
+    <ul>
+      <li *ngFor="let message of errorMessages; let i = index; trackBy: trackByFn">
+        {{message}}
+      </li>
+    </ul>
+  </ng-container>
+</div>

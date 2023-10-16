@@ -1,0 +1,12 @@
+@import 'src/styles/_variables.scss';
+
+.alert {
+  margin-top: $gap;
+}
+
+.alert-danger {
+  color: $white;
+  background: rgba($color: $error, $alpha: 0.15);
+  border: 1px solid $error;
+  border-radius: $border-radius;
+}

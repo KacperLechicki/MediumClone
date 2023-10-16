@@ -6,6 +6,7 @@ const initialState: AuthStateInterface = {
   isSubmitting: false,
   currentUser: undefined,
   isLoading: false,
+  validationErrors: null,
 };
 
 const authFeature = createFeature({
@@ -17,6 +18,7 @@ const authFeature = createFeature({
       (state: AuthStateInterface): AuthStateInterface => ({
         ...state,
         isSubmitting: true,
+        validationErrors: null,
       })
     ),
 
@@ -26,14 +28,16 @@ const authFeature = createFeature({
         ...state,
         isSubmitting: false,
         currentUser: action.currentUser,
+        validationErrors: null,
       })
     ),
 
     on(
       authActions.registerFailure,
-      (state: AuthStateInterface): AuthStateInterface => ({
+      (state: AuthStateInterface, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
+        validationErrors: action.errors,
       })
     ),
 
@@ -56,7 +60,7 @@ const authFeature = createFeature({
 
     on(
       authActions.loginFailure,
-      (state: AuthStateInterface): AuthStateInterface => ({
+      (state: AuthStateInterface, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
       })
@@ -95,4 +99,5 @@ export const {
   reducer: authReducer,
   selectIsSubmitting,
   selectCurrentUser,
+  selectValidationErrors,
 } = authFeature;

@@ -6,6 +6,7 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface';
 import { PersistanceService } from 'src/app/shared/services/persistance.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export const getCurrentUserEffect = createEffect(
   (
@@ -48,8 +49,12 @@ export const registerEffect = createEffect(
             persistanceService.set('accessToken', currentUser.token);
             return authActions.registerSuccess({ currentUser });
           }),
-          catchError(() => {
-            return of(authActions.registerFailure());
+          catchError((errors: HttpErrorResponse) => {
+            return of(
+              authActions.registerFailure({
+                errors: errors.error.errors,
+              })
+            );
           })
         );
       })

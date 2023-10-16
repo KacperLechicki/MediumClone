@@ -1,38 +1,45 @@
-<div class="auth-page">
-  <div class="container page">
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <div class="form-container">
-          <div class="form-container__header">
-            <h1>Sign up</h1>
+<ng-container *ngIf="data$ | async as data">
+  <div class="auth-page">
+    <div class="container page">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-container">
+            <div class="form-container__header">
+              <h1>Sign up</h1>
 
-            <p>
-              <a routerLink="/login" routerLinkActive="router-link-active">Have an account?</a>
-            </p>
+              <p>
+                <a class="underline-text-animation" routerLink="/login" routerLinkActive="router-link-active">Have an
+                  account?</a>
+              </p>
+            </div>
+
+            <div class="form-container__body">
+              <form [formGroup]="form" (enter)="submit()">
+                <app-input [type]="'text'" [placeholder]="'Username'" [formGroup]="form" [controlName]="'username'"
+                  [clearable]="true" [icon]="'person-outline'"></app-input>
+                <app-input [type]="'email'" [placeholder]="'Email'" [formGroup]="form" [controlName]="'email'"
+                  [clearable]="true" [icon]="'at-circle-outline'"></app-input>
+                <app-input [type]="'password'" [placeholder]="'Password'" [formGroup]="form" [controlName]="'password'"
+                  [clearable]="true" [icon]="'key-outline'"></app-input>
+
+                <div class="buttons">
+                  <app-button [label]="'Reset'" [icon]="'close-outline'" [style]="'error-pill'" (btnClick)="reset()"
+                    class="button" [isDisabled]="form.pristine"></app-button>
+                  <app-button [label]="'Sign up'" [icon]="'enter-outline'" [style]="'pill'" (btnClick)="submit()"
+                    class=" button" [isDisabled]="form.invalid"></app-button>
+                </div>
+
+                <app-alert *ngIf="data.validationErrors" [type]="'danger'" [contentType]="'validationErrors'"
+                  [content]="data.validationErrors">
+                </app-alert>
+              </form>
+            </div>
+
           </div>
-
-          <div class="form-container__body">
-            <form [formGroup]="form" (enter)="submit()">
-              <app-input [type]="'text'" [placeholder]="'Username'" [formGroup]="form" [controlName]="'username'"
-                [clearable]="true" [icon]="'person-outline'"></app-input>
-              <app-input [type]="'email'" [placeholder]="'Email'" [formGroup]="form" [controlName]="'email'"
-                [clearable]="true" [icon]="'at-circle-outline'"></app-input>
-              <app-input [type]="'password'" [placeholder]="'Password'" [formGroup]="form" [controlName]="'password'"
-                [clearable]="true" [icon]="'key-outline'"></app-input>
-
-              <div class="buttons">
-                <app-button [label]="'Reset'" [icon]="'close-outline'" [style]="'error-pill'" (btnClick)="reset()"
-                  class="button" [isDisabled]="form.pristine"></app-button>
-                <app-button [label]="'Sign up'" [icon]="'enter-outline'" [style]="'pill'" (btnClick)="submit()"
-                  class="button" [isDisabled]="form.invalid"></app-button>
-              </div>
-            </form>
-          </div>
-
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<app-spinner [condition]="isSubmitting$ | async"></app-spinner>
+  <app-spinner [condition]="data.isSubmitting"></app-spinner>
+</ng-container>
