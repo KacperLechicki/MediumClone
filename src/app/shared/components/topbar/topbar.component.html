@@ -24,6 +24,12 @@
                 {{data.currentUser.username}}
               </a>
             </li>
+            <li class="nav-item mobile">
+              <a class="nav-link">
+                <ion-icon name="exit-outline"></ion-icon>
+                Log Out
+              </a>
+            </li>
           </ng-container>
           <ng-container *ngIf="data.currentUser === null">
             <li class="nav-item">
@@ -71,23 +77,32 @@
       </li>
       <li class="nav-item mobile">
         <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
-
           <img class="user-pic" [src]="data.currentUser.image" />
           {{data.currentUser.username}}
+        </a>
+      </li>
+      <li class="nav-item mobile">
+        <a class="nav-link">
+          <ion-icon name="exit-outline"></ion-icon>
+          Log Out
         </a>
       </li>
     </ul>
   </ng-container>
   <ng-container *ngIf="data.currentUser === null">
-    <li class="nav-item mobile">
-      <a routerLink="/login" class="nav-link">
-        Sign in
-      </a>
-    </li>
-    <li class="nav-item mobile">
-      <a routerLink="/register" class="nav-link">
-        Sign up
-      </a>
-    </li>
+    <ul class="mobile-menu-content">
+      <li class="nav-item mobile">
+        <a routerLink="/login" class="nav-link">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+          Sign in
+        </a>
+      </li>
+      <li class="nav-item mobile">
+        <a routerLink="/register" class="nav-link">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+          Sign up
+        </a>
+      </li>
+    </ul>
   </ng-container>
 </app-side-menu>
