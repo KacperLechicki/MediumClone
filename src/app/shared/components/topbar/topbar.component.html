@@ -20,7 +20,7 @@
             <li class="nav-item">
               <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
 
-                <img class="user-pic" [src]="data.currentUser.image" />
+                <img class="user-pic" [src]="data.currentUser.image" loading="lazy" />
                 {{data.currentUser.username}}
               </a>
             </li>
@@ -77,7 +77,7 @@
       </li>
       <li class="nav-item mobile">
         <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
-          <img class="user-pic" [src]="data.currentUser.image" />
+          <img class="user-pic" [src]="data.currentUser.image" loading="lazy" />
           {{data.currentUser.username}}
         </a>
       </li>
