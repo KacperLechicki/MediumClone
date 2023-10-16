@@ -1,0 +1,64 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $gap;
+  width: clamp(300px, 90%, 500px);
+
+  &__header {
+    width: 100%;
+    margin-bottom: $gap-sm;
+
+    h1 {
+      margin-bottom: 0;
+      text-align: center;
+      font-size: 4rem;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.4rem;
+
+      a {
+        color: $palette-light-blue;
+      }
+    }
+  }
+
+  &__body {
+    width: 100%;
+
+    form {
+      width: 100%;
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $gap-sm;
+
+        @media only screen and (max-width: 576px) {
+          .button {
+            width: 100%;
+            ::ng-deep {
+              .component {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        @media only screen and (min-width: 576px) {
+          flex-direction: row;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}

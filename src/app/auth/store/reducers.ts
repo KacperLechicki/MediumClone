@@ -35,6 +35,31 @@ const authFeature = createFeature({
         ...state,
         isSubmitting: false,
       })
+    ),
+
+    on(
+      authActions.login,
+      (state: AuthStateInterface): AuthStateInterface => ({
+        ...state,
+        isSubmitting: true,
+      })
+    ),
+
+    on(
+      authActions.loginSuccess,
+      (state: AuthStateInterface, action): AuthStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        currentUser: action.currentUser,
+      })
+    ),
+
+    on(
+      authActions.loginFailure,
+      (state: AuthStateInterface): AuthStateInterface => ({
+        ...state,
+        isSubmitting: false,
+      })
     )
   ),
 });
