@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InputComponent } from 'src/app/shared/components/input/input.component';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -32,7 +32,7 @@ import { ValidationErrorInterface } from '../../types/validationError.interface'
     AlertComponent,
   ],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   protected form = this.fb.nonNullable.group({
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -44,12 +44,19 @@ export class RegisterComponent {
     validationErrors: this.store.select(selectValidationErrors),
   });
 
+  protected resetFlag!: boolean;
+
   constructor(
     private fb: FormBuilder,
     private store: Store<{ auth: AuthStateInterface }>
   ) {}
 
+  ngOnInit(): void {
+    this.resetFlag = false;
+  }
+
   protected submit(): void {
+    this.resetFlag = false;
     if (this.form.valid) {
       this.form.markAllAsTouched();
       const request: RegisterRequestInterface = {
@@ -61,6 +68,7 @@ export class RegisterComponent {
   }
 
   protected reset(): void {
+    this.resetFlag = true;
     this.form.reset();
   }
 }

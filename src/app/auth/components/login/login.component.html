@@ -27,8 +27,8 @@
                     class="button" [isDisabled]="form.invalid"></app-button>
                 </div>
 
-                <app-alert *ngIf="data.validationErrors" [type]="'danger'" [contentType]="'validationErrors'"
-                  [content]="data.validationErrors">
+                <app-alert *ngIf="data.validationErrors && !resetFlag" [type]="'danger'"
+                  [contentType]="'validationErrors'" [content]="data.validationErrors">
                 </app-alert>
               </form>
             </div>
