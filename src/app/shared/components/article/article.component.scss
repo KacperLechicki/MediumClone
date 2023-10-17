@@ -11,12 +11,16 @@
   padding: 15px;
   border: 1px solid rgba($color: $white, $alpha: 0.15);
   border-radius: $border-radius;
+  overflow: hidden;
+  overflow-x: auto;
 
   .article-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
     width: 100%;
+    min-width: 450px;
 
     .user {
       display: flex;
@@ -58,7 +62,8 @@
 
   .preview-link {
     width: 100%;
-    
+    min-width: 450px;
+
     .title {
       font-size: 2.4rem;
       color: $palette-light-blue;
@@ -73,6 +78,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 15px;
       width: 100%;
 
       .readm {
