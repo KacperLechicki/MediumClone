@@ -1,0 +1,21 @@
+<div class="article-preview" *ngIf="data">
+  <div class="article-meta">
+    <a [routerLink]="['/profiles', data.author.username]">
+      <img [src]="data.author.image" loading="lazy">
+    </a>
+
+    <div class="info">
+      <a [routerLink]="['/profiles', data.author.username]">
+        {{data.author.username}}
+      </a>
+      <span class="date">{{data.createdAt}}</span>
+    </div>
+    <div class="pull-xs-right">ADD TO FAVORITES</div>
+  </div>
+  <a [routerLink]="['/articles', data.slug]" class="preview-link">
+    <h1 class="title">{{data.title}}</h1>
+    <p class="desc">{{data.description}}</p>
+    <span>Read more...</span>
+    TAG LIST
+  </a>
+</div>

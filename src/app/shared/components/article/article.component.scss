@@ -1,0 +1,13 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
+.article-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 20px 10px 20px 0;
+  padding: 15px;
+  border: 1px solid rgba($color: $white, $alpha: 0.15);
+  border-radius: $border-radius;
+}

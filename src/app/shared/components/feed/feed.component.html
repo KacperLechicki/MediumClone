@@ -1,1 +1,9 @@
-Feed
+<ng-container *ngIf="data$ | async as data">
+  <app-spinner [condition]="data.isLoading" [overlay]="false"></app-spinner>
+  <app-alert *ngIf="data.error" [type]="'danger'" [content]="data.error"></app-alert>
+
+  <div *ngIf="data.feed">
+    <app-article *ngFor="let article of data.feed.articles" [data]="article"></app-article>
+    PAGINATION
+  </div>
+</ng-container>

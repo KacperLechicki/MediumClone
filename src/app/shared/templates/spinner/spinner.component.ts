@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SpinnerComponent {
   @Input() condition!: boolean | null;
+  @Input() overlay!: boolean;
 }

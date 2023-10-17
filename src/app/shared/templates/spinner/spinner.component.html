@@ -1,3 +1,5 @@
-<div *ngIf="condition" class="spinner-overlay">
+<div *ngIf="condition && overlay" class="spinner-overlay">
   <div class="spinner-border spinner" role="status"></div>
 </div>
+
+<div *ngIf="condition && !overlay" class="spinner-border spinner spinner-ind" role="status"></div>
