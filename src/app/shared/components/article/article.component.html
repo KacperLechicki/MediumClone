@@ -1,21 +1,25 @@
 <div class="article-preview" *ngIf="data">
   <div class="article-meta">
-    <a [routerLink]="['/profiles', data.author.username]">
-      <img [src]="data.author.image" loading="lazy">
-    </a>
-
-    <div class="info">
+    <div class="user">
       <a [routerLink]="['/profiles', data.author.username]">
-        {{data.author.username}}
+        <img [src]="data.author.image" loading="lazy">
       </a>
-      <span class="date">{{data.createdAt}}</span>
+
+      <div class="info">
+        <a [routerLink]="['/profiles', data.author.username]" class="username">
+          {{data.author.username}}
+        </a>
+        <span class="date">{{data.createdAt | date: 'dd-MM-yyyy'}}</span>
+      </div>
     </div>
-    <div class="pull-xs-right">ADD TO FAVORITES</div>
+    <div class="favorite"><ion-icon name="heart-outline"></ion-icon></div>
   </div>
   <a [routerLink]="['/articles', data.slug]" class="preview-link">
     <h1 class="title">{{data.title}}</h1>
     <p class="desc">{{data.description}}</p>
-    <span>Read more...</span>
-    TAG LIST
+    <div class="footer">
+      <span class="readm">Read more...</span>
+      <div class="tags">TAG LIST</div>
+    </div>
   </a>
 </div>

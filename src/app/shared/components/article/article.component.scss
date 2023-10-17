@@ -6,8 +6,77 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 15px;
   margin: 20px 10px 20px 0;
   padding: 15px;
   border: 1px solid rgba($color: $white, $alpha: 0.15);
   border-radius: $border-radius;
+
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .user {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        max-height: 30px;
+        border-radius: 50%;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: 1.4rem;
+
+        .username {
+          color: $palette-light-blue;
+        }
+
+        .date {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .favorite {
+      color: $error;
+      font-size: 2.2rem;
+
+      ion-icon {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .preview-link {
+    .title {
+      font-size: 2.4rem;
+      color: $palette-light-blue;
+    }
+
+    .desc {
+      font-size: 1.4rem;
+      color: rgba($color: $white, $alpha: 1);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .readm {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: rgba($color: $white, $alpha: 0.5);
+      }
+    }
+  }
 }
