@@ -57,6 +57,8 @@
   }
 
   .preview-link {
+    width: 100%;
+    
     .title {
       font-size: 2.4rem;
       color: $palette-light-blue;
@@ -71,6 +73,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      width: 100%;
 
       .readm {
         font-size: 1.4rem;

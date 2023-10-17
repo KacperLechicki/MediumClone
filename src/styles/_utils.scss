@@ -18,3 +18,14 @@
     width: 100%;
   }
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $border-radius;
+  background: $palette-light-blue;
+}

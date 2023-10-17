@@ -4,6 +4,7 @@
 
   <div *ngIf="data.feed">
     <app-article *ngFor="let article of data.feed.articles" [data]="article"></app-article>
-    PAGINATION
+    <app-paginator [total]="data.feed.articlesCount" [limit]="limit" [url]="baseUrl"
+      [currentPage]="currentPage"></app-paginator>
   </div>
 </ng-container>

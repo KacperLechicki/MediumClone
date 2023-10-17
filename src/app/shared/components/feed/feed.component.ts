@@ -1,13 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FeedActions } from './store/actions';
-import { combineLatest } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
 import { selectError, selectFeedData, selectIsLoading } from './store/reducers';
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../templates/spinner/spinner.component';
 import { AlertComponent } from '../../templates/alert/alert.component';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
 import { ArticleComponent } from '../article/article.component';
+import { PaginatorComponent } from '../paginator/paginator.component';
+import { constantVariables } from '../../constants/constantVariables';
+import queryString from 'query-string';
 
 @Component({
   selector: 'app-feed',
@@ -18,12 +21,19 @@ import { ArticleComponent } from '../article/article.component';
     AlertComponent,
     RouterModule,
     ArticleComponent,
+    PaginatorComponent,
   ],
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit, OnDestroy {
   @Input() apiUrl: string = '';
+
+  protected limit = constantVariables.limit;
+  protected baseUrl = this.router.url.split('?')[0];
+  protected currentPage = 0;
+
+  private _subscriptions = new Subscription();
 
   protected data$ = combineLatest({
     isLoading: this.store.select(selectIsLoading),
@@ -31,9 +41,34 @@ export class FeedComponent implements OnInit {
     feed: this.store.select(selectFeedData),
   });
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(FeedActions.getFeed({ url: this.apiUrl }));
+    this._subscriptions.add(
+      this.route.queryParams.subscribe((params: Params) => {
+        this.currentPage = Number(params['page'] || '1');
+        this.fetchFeed();
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.unsubscribe();
+  }
+
+  private fetchFeed(): void {
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = queryString.parseUrl(this.apiUrl);
+    const stringifiedParams = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    });
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+    this.store.dispatch(FeedActions.getFeed({ url: apiUrlWithParams }));
   }
 }
