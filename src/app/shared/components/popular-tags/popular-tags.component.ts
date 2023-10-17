@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { popularTagsActions } from './store/actions';
-import { combineLatest } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
 import {
   selectError,
   selectIsLoading,
@@ -10,7 +10,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from '../../templates/spinner/spinner.component';
 import { AlertComponent } from '../../templates/alert/alert.component';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-popular-tags',
@@ -19,16 +19,30 @@ import { RouterModule } from '@angular/router';
   templateUrl: './popular-tags.component.html',
   styleUrls: ['./popular-tags.component.scss'],
 })
-export class PopularTagsComponent implements OnInit {
+export class PopularTagsComponent implements OnInit, OnDestroy {
   protected data$ = combineLatest({
     popularTags: this.store.select(selectPopularTagsData),
     isLoading: this.store.select(selectIsLoading),
     error: this.store.select(selectError),
   });
 
-  constructor(private store: Store) {}
+  private _subscriptions = new Subscription();
+
+  constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this._subscriptions.add(
+      this.route.queryParams.subscribe((params: Params) => {
+        this.fetchPopularTags();
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.unsubscribe();
+  }
+
+  private fetchPopularTags(): void {
     this.store.dispatch(popularTagsActions.getPopularTags());
   }
 }
