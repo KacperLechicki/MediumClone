@@ -1,0 +1,15 @@
+<ng-container *ngIf="data$ | async as data">
+  <div class="component">
+    <app-spinner [condition]="data.isLoading" [overlay]="false"></app-spinner>
+    <app-alert *ngIf="data.error" [type]="'danger'" [content]="data.error"></app-alert>
+
+    <div class="sidebar" *ngIf="data.popularTags">
+      <p class="title">Popular Tags</p>
+
+      <div class="tag-list">
+        <a *ngFor="let popularTag of data.popularTags" [routerLink]="['/tags', popularTag]"
+          class="tag tag-default tag-pill">{{popularTag}}</a>
+      </div>
+    </div>
+  </div>
+</ng-container>
