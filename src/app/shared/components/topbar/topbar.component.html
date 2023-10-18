@@ -4,6 +4,10 @@
       <a routerLink="/" class="navbar-brand">Medium<span>Clone</span></a>
       <ul class="nav navbar-nav pull-xs-right">
         <div class="wide">
+          <ng-container>
+            <app-spinner [condition]="(!data.currentUser && data.currentUser !== null)" [overlay]="false"></app-spinner>
+          </ng-container>
+
           <ng-container *ngIf="data.currentUser">
             <li class="nav-item">
               <a routerLink="/articles/new" class="nav-link">

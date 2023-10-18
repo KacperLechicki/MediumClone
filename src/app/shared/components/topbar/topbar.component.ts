@@ -6,11 +6,18 @@ import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
 import { selectCurrentUser } from 'src/app/auth/store/reducers';
 import { SideMenuComponent } from '../../templates/side-menu/side-menu.component';
+import { SpinnerComponent } from '../../templates/spinner/spinner.component';
 
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, IonicModule, SideMenuComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    IonicModule,
+    SideMenuComponent,
+    SpinnerComponent,
+  ],
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
 })

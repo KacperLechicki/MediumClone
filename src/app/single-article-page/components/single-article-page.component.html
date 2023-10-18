@@ -1,4 +1,9 @@
 <ng-container *ngIf="data$ | async as data">
+  <button class="button button-return" [routerLink]="['/']">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <span>Back</span>
+  </button>
+
   <div class="article-page">
     <div class="banner" *ngIf="data.article">
       <div class="container">
@@ -38,7 +43,7 @@
 
       <div class="row article-content" *ngIf="data.article">
         <div class="col-xs-12">
-          <div>
+          <div class="body">
             <p>{{data.article.body}}</p>
           </div>
 

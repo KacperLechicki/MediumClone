@@ -1,3 +1,4 @@
+<app-alert *ngIf="!(data$ | async)" [type]="'danger'" [content]="'Something went wrong'"></app-alert>
 <ng-container *ngIf="data$ | async as data">
   <app-spinner [condition]="data.isLoading" [overlay]="false"></app-spinner>
   <app-alert *ngIf="data.error" [type]="'danger'" [content]="data.error"></app-alert>

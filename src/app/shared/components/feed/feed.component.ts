@@ -29,6 +29,7 @@ import queryString from 'query-string';
     RouterModule,
     ArticleComponent,
     PaginatorComponent,
+    AlertComponent,
   ],
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
