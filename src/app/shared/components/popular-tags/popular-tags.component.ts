@@ -32,7 +32,7 @@ export class PopularTagsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._subscriptions.add(
-      this.route.queryParams.subscribe((params: Params) => {
+      this.route.params.subscribe((params: Params) => {
         this.fetchPopularTags();
       })
     );
