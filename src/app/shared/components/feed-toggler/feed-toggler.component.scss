@@ -1,0 +1,29 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
+.nav {
+  display: flex;
+  gap: 15px;
+
+  .nav-item {
+    background: none;
+    border: none;
+    border-radius: $border-radius;
+
+    .nav-link {
+      padding: 0 15px 15px 15px;
+      color: $white;
+      transition: color 0.1s, border-bottom 0.1s;
+
+      &.active {
+        color: $palette-light-blue;
+        border-bottom: 2px solid $palette-light-blue;
+      }
+
+      &:hover {
+        color: $palette-light-blue;
+        border-bottom: 2px solid $palette-light-blue;
+      }
+    }
+  }
+}

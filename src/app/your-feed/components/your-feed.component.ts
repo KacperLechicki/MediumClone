@@ -1,23 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BannerComponent } from 'src/app/shared/components/banner/banner.component';
 import { FeedTogglerComponent } from 'src/app/shared/components/feed-toggler/feed-toggler.component';
 import { FeedComponent } from 'src/app/shared/components/feed/feed.component';
 import { PopularTagsComponent } from 'src/app/shared/components/popular-tags/popular-tags.component';
 
 @Component({
-  selector: 'app-global-feed',
+  selector: 'app-your-feed',
   standalone: true,
   imports: [
     CommonModule,
-    FeedComponent,
+    RouterModule,
     BannerComponent,
-    PopularTagsComponent,
     FeedTogglerComponent,
+    FeedComponent,
+    PopularTagsComponent,
   ],
-  templateUrl: './global-feed.component.html',
-  styleUrls: ['./global-feed.component.scss'],
+  templateUrl: './your-feed.component.html',
+  styleUrls: ['./your-feed.component.scss'],
 })
-export class GlobalFeedComponent {
+export class YourFeedComponent {
   protected readonly apiUrl = '/articles';
 }

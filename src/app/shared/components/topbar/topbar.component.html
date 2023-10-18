@@ -8,38 +8,38 @@
             <li class="nav-item">
               <a routerLink="/articles/new" class="nav-link">
                 <ion-icon name="create-outline"></ion-icon>
-                New Post
+                <span>New Post</span>
               </a>
             </li>
             <li class="nav-item">
               <a routerLink="/settings" class="nav-link">
                 <ion-icon name="settings-outline"></ion-icon>
-                Settings
+                <span>Settings</span>
               </a>
             </li>
             <li class="nav-item">
               <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
 
                 <img class="user-pic" [src]="data.currentUser.image" loading="lazy" />
-                {{data.currentUser.username}}
+                <span>{{data.currentUser.username}}</span>
               </a>
             </li>
             <li class="nav-item mobile">
               <a class="nav-link">
                 <ion-icon name="exit-outline"></ion-icon>
-                Log Out
+                <span>Log Out</span>
               </a>
             </li>
           </ng-container>
           <ng-container *ngIf="data.currentUser === null">
             <li class="nav-item">
               <a routerLink="/login" class="nav-link">
-                Sign in
+                <span>Sign in</span>
               </a>
             </li>
             <li class="nav-item">
               <a routerLink="/register" class="nav-link">
-                Sign up
+                <span>Sign up</span>
               </a>
             </li>
           </ng-container>
@@ -66,25 +66,25 @@
       <li class="nav-item mobile">
         <a routerLink="/articles/new" class="nav-link">
           <ion-icon name="create-outline"></ion-icon>
-          New Post
+          <span>New Post</span>
         </a>
       </li>
       <li class="nav-item mobile">
         <a routerLink="/settings" class="nav-link">
           <ion-icon name="settings-outline"></ion-icon>
-          Settings
+          <span>Settings</span>
         </a>
       </li>
       <li class="nav-item mobile">
         <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
           <img class="user-pic" [src]="data.currentUser.image" loading="lazy" />
-          {{data.currentUser.username}}
+          <span>{{data.currentUser.username}}</span>
         </a>
       </li>
       <li class="nav-item mobile">
         <a class="nav-link">
           <ion-icon name="exit-outline"></ion-icon>
-          Log Out
+          <span>Log Out</span>
         </a>
       </li>
     </ul>
@@ -94,13 +94,13 @@
       <li class="nav-item mobile">
         <a routerLink="/login" class="nav-link">
           <ion-icon name="arrow-forward-outline"></ion-icon>
-          Sign in
+          <span>Sign in</span>
         </a>
       </li>
       <li class="nav-item mobile">
         <a routerLink="/register" class="nav-link">
           <ion-icon name="arrow-forward-outline"></ion-icon>
-          Sign up
+          <span>Sign up</span>
         </a>
       </li>
     </ul>

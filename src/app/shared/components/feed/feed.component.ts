@@ -1,4 +1,11 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FeedActions } from './store/actions';
 import { Subscription, combineLatest } from 'rxjs';
@@ -26,7 +33,7 @@ import queryString from 'query-string';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent implements OnInit, OnDestroy {
+export class FeedComponent implements OnInit, OnChanges, OnDestroy {
   @Input() apiUrl: string = '';
 
   protected limit = constantVariables.limit;
@@ -54,6 +61,16 @@ export class FeedComponent implements OnInit, OnDestroy {
         this.fetchFeed();
       })
     );
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const isApiUrlChanged =
+      !changes['apiUrl'].firstChange &&
+      changes['apiUrl'].currentValue !== changes['apiUrl'].previousValue;
+
+    if (isApiUrlChanged) {
+      this.fetchFeed();
+    }
   }
 
   ngOnDestroy(): void {
