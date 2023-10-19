@@ -1,54 +1,60 @@
 @import 'src/styles/_variables.scss';
 @import 'src/styles/_mixins.scss';
 
-.form-container {
+.row {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: $gap;
-  width: clamp(300px, 90%, 500px);
+  justify-content: center;
+  width: 100%;
 
-  &__header {
-    width: 100%;
-    margin-bottom: $gap;
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: $gap-sm;
+    width: clamp(300px, 90%, 700px);
 
-    h1 {
-      margin-bottom: 0;
-      text-align: center;
-      font-size: 4rem;
+    &__header {
+      width: 100%;
+      margin-bottom: $gap;
+
+      h1 {
+        margin-bottom: 0;
+        text-align: center;
+        font-size: 4rem;
+      }
     }
-  }
 
-  &__body {
-    width: 100%;
-
-    form {
+    &__body {
       width: 100%;
 
-      .buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: $gap;
+      form {
+        width: 100%;
 
-        @media only screen and (max-width: 576px) {
-          .button {
-            width: 100%;
-            ::ng-deep {
-              .component {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
+        .buttons {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: $gap;
+
+          @media only screen and (max-width: 576px) {
+            .button {
+              width: 100%;
+              ::ng-deep {
+                .component {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 100%;
+                }
               }
             }
           }
-        }
 
-        @media only screen and (min-width: 576px) {
-          flex-direction: row;
-          justify-content: flex-end;
+          @media only screen and (min-width: 576px) {
+            flex-direction: row;
+            justify-content: flex-end;
+          }
         }
       }
     }
