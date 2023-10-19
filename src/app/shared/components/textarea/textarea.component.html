@@ -3,8 +3,8 @@
     <div *ngIf="icon" class="icon">
       <ion-icon name="{{icon}}"></ion-icon>
     </div>
-    <input [ngClass]="{'iconContainer': icon}" [formControlName]="controlName" class="control" [type]="type"
-      [placeholder]="placeholder">
+    <textarea [ngClass]="{'iconContainer': icon}" [formControlName]="controlName" class="control"
+      [placeholder]="placeholder"></textarea>
     <div *ngIf="clearable" class="clear" (click)="clear()">
       <ion-icon name="close-outline"></ion-icon>
     </div>

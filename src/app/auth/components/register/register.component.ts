@@ -15,7 +15,6 @@ import { authActions } from '../../store/actions';
 import { SpinnerComponent } from 'src/app/shared/templates/spinner/spinner.component';
 import { combineLatest } from 'rxjs';
 import { AlertComponent } from 'src/app/shared/templates/alert/alert.component';
-import { ValidationErrorInterface } from '../../types/validationError.interface';
 
 @Component({
   selector: 'app-register',

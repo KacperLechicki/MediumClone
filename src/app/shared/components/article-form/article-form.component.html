@@ -1,0 +1,39 @@
+<div class="editor-page">
+  <div class="container page">
+    <div class="row">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-container">
+            <div class="form-container__header">
+              <h1>Create New Post</h1>
+            </div>
+
+            <div class="form-container__body">
+              <form [formGroup]="form" (keyup.enter)="onSubmit()">
+                <app-input [type]="'text'" [placeholder]="'Title'" [formGroup]="form" [controlName]="'title'"
+                  [clearable]="true" [icon]="'pencil-outline'"></app-input>
+                <app-input [type]="'text'" [placeholder]="'Description'" [formGroup]="form"
+                  [controlName]="'description'" [clearable]="true" [icon]="'pencil-outline'"></app-input>
+                <app-textarea [placeholder]="'Content'" [formGroup]="form" [controlName]="'body'"
+                  [clearable]="true" [icon]="'pencil-outline'"></app-textarea>
+                <app-input [type]="'text'" [placeholder]="'Tags'" [formGroup]="form" [controlName]="'tagList'"
+                  [clearable]="true" [icon]="'pricetag-outline'"></app-input>
+
+                <div class="buttons">
+                  <app-button [label]="'Reset'" [icon]="'close-outline'" [style]="'error-pill'" class="button"
+                    [isDisabled]="form.pristine || isSubmitting" (btnClick)="reset()"></app-button>
+                  <app-button [label]="'Add'" [icon]="'add-outline'" [style]="'pill'" (btnClick)="onSubmit()"
+                    class="button" [isDisabled]="form.invalid || isSubmitting"></app-button>
+                </div>
+
+                <app-alert *ngIf="errors && !resetFlag" [type]="'danger'" [contentType]="'validationErrors'"
+                  [content]="errors">
+                </app-alert>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

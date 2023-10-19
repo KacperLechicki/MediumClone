@@ -29,7 +29,7 @@
     color: rgba($color: $white, $alpha: 0.5);
   }
 
-  &.ng-invalid.ng-touched {
+  &.ng-invalid.ng-dirty {
     border: 1px solid $error-border;
   }
 }

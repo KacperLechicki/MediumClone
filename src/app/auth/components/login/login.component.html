@@ -14,7 +14,7 @@
             </div>
 
             <div class="form-container__body">
-              <form [formGroup]="form" (enter)="submit()">
+              <form [formGroup]="form" (keyup.enter)="submit()">
                 <app-input [type]="'email'" [placeholder]="'Email'" [formGroup]="form" [controlName]="'email'"
                   [clearable]="true" [icon]="'at-circle-outline'"></app-input>
                 <app-input [type]="'password'" [placeholder]="'Password'" [formGroup]="form" [controlName]="'password'"
