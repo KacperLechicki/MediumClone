@@ -22,13 +22,12 @@
               <span class="date">{{data.article.createdAt | date: 'dd-MM-yyyy'}}</span>
             </div>
           </div>
-          <!-- <span *ngIf="data.isAuthor"> -->
-          <span class="buttons">
+          <span *ngIf="data.isAuthor" class="buttons">
             <a [routerLink]="['/articles', data.article.slug, 'edit']" class="button button-edit">
               <ion-icon name="pencil-outline"></ion-icon>
               <span>Edit</span>
             </a>
-            <button class="button button-error">
+            <button class="button button-error" (click)="deleteArticle()">
               <ion-icon name="trash-outline"></ion-icon>
               <span>Delete</span>
             </button>

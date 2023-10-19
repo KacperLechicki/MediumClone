@@ -4,6 +4,7 @@ import { provideEffects } from '@ngrx/effects';
 import * as articleEffects from './store/effects';
 import { provideState } from '@ngrx/store';
 import { articleFeatureKey, articleReducer } from './store/reducers';
+import { SingleArticleService } from './services/single-article.service';
 
 export const singleArticlePageRoutes: Route[] = [
   {
@@ -12,6 +13,7 @@ export const singleArticlePageRoutes: Route[] = [
     providers: [
       provideEffects(articleEffects),
       provideState(articleFeatureKey, articleReducer),
+      SingleArticleService
     ],
   },
 ];

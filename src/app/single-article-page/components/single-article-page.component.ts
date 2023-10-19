@@ -64,4 +64,8 @@ export class SingleArticlePageComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(articleActions.getArticle({ slug: this.slug }));
   }
+
+  protected deleteArticle(): void {
+    this.store.dispatch(articleActions.deleteArticle({ slug: this.slug }));
+  }
 }
