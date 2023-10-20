@@ -34,8 +34,7 @@ const popularTagsFeature = createFeature({
         ...state,
         isLoading: false,
       })
-    ),
-    on(routerNavigationAction, () => initialState)
+    )
   ),
 });
 
