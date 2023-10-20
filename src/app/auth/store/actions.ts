@@ -3,6 +3,7 @@ import { RegisterRequestInterface } from '../types/registerRequest.interface';
 import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface';
 import { LoginRequestInterface } from '../types/loginRequest.interface';
 import { ValidationErrorInterface } from '../types/validationError.interface';
+import { CurrentUserRequestInterface } from 'src/app/shared/types/currentUserRequest.interface';
 
 export const authActions = createActionGroup({
   source: 'auth',
@@ -22,5 +23,15 @@ export const authActions = createActionGroup({
     'Get Current User': emptyProps(),
     'Get Current User Success': props<{ currentUser: CurrentUserInterface }>(),
     'Get Current User Failure': emptyProps(),
+
+    'Update Current User': props<{
+      currentUserRequest: CurrentUserRequestInterface;
+    }>(),
+    'Update Current User Success': props<{
+      currentUser: CurrentUserInterface;
+    }>(),
+    'Update Current User Failure': props<{
+      errors: ValidationErrorInterface;
+    }>(),
   },
 });

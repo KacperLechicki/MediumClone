@@ -121,6 +121,14 @@ const authFeature = createFeature({
       })
     ),
 
+    on(
+      authActions.updateCurrentUserSuccess,
+      (state: AuthStateInterface, action): AuthStateInterface => ({
+        ...state,
+        currentUser: action.currentUser,
+      })
+    ),
+
     on(routerNavigatedAction, (state: AuthStateInterface) => ({
       ...state,
       validationErrors: null,
