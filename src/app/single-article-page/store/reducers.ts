@@ -7,6 +7,7 @@ const initialState: ArticleStateInterface = {
   isLoading: false,
   error: null,
   data: null,
+  deleteIsLoading: false,
 };
 
 const articleFeature = createFeature({
@@ -35,6 +36,27 @@ const articleFeature = createFeature({
         isLoading: false,
       })
     ),
+    on(
+      articleActions.deleteArticle,
+      (state: ArticleStateInterface): ArticleStateInterface => ({
+        ...state,
+        deleteIsLoading: true,
+      })
+    ),
+    on(
+      articleActions.deleteArticleSuccess,
+      (state: ArticleStateInterface): ArticleStateInterface => ({
+        ...state,
+        deleteIsLoading: false,
+      })
+    ),
+    on(
+      articleActions.deleteArticleFailure,
+      (state: ArticleStateInterface): ArticleStateInterface => ({
+        ...state,
+        deleteIsLoading: false,
+      })
+    ),
     on(routerNavigatedAction, () => initialState)
   ),
 });
@@ -45,4 +67,5 @@ export const {
   selectIsLoading,
   selectData: selectArticleData,
   selectError,
+  selectDeleteIsLoading,
 } = articleFeature;

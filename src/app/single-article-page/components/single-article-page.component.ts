@@ -5,6 +5,7 @@ import { articleActions } from '../store/actions';
 import { combineLatest, filter, map } from 'rxjs';
 import {
   selectArticleData,
+  selectDeleteIsLoading,
   selectError,
   selectIsLoading,
 } from '../store/reducers';
@@ -57,6 +58,7 @@ export class SingleArticlePageComponent implements OnInit {
     error: this.store.select(selectError),
     article: this.store.select(selectArticleData),
     isAuthor: this.isAuthor$,
+    deleteIsLoading: this.store.select(selectDeleteIsLoading),
   });
 
   constructor(private route: ActivatedRoute, private store: Store) {}
