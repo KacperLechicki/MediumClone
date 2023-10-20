@@ -22,7 +22,7 @@ import { TextareaComponent } from '../textarea/textarea.component';
     AlertComponent,
     InputComponent,
     ButtonComponent,
-    TextareaComponent
+    TextareaComponent,
   ],
   templateUrl: './article-form.component.html',
   styleUrls: ['./article-form.component.scss'],
@@ -31,6 +31,10 @@ export class ArticleFormComponent implements OnInit {
   @Input() initialValues?: ArticleFormValuesInterface;
   @Input() isSubmitting = false;
   @Input() errors: ValidationErrorInterface | null = null;
+  @Input() actionLabel = 'Add';
+  @Input() actionIcon = 'add-outline';
+  @Input() formLabel = 'Create New Post';
+  @Input() mode = 'CREATE';
 
   @Output() articleSubmit = new EventEmitter<ArticleFormValuesInterface>();
 

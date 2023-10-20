@@ -5,7 +5,7 @@
 
 <ng-container *ngIf="data$ | async as data">
   <app-article-form [initialValues]="initialValues" [isSubmitting]="data.isSubmitting" [errors]="data.validationErrors"
-    (articleSubmit)="onSubmit($event)"></app-article-form>
+    [mode]="'CREATE'" (articleSubmit)="onSubmit($event)"></app-article-form>
 
   <app-spinner [condition]="data.isSubmitting" [overlay]="true"></app-spinner>
 </ng-container>

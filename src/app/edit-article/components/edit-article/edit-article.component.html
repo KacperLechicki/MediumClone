@@ -1,0 +1,14 @@
+<button class="button button-return" [routerLink]="['/articles', slug]">
+  <ion-icon name="arrow-back-outline"></ion-icon>
+  <span>Back</span>
+</button>
+
+<ng-container *ngIf="data$ | async as data">
+  <app-article-form *ngIf="data.initialValues" [initialValues]="data.initialValues" [isSubmitting]="data.isSubmitting"
+    [mode]="'EDIT'" [formLabel]="'Update Post'" [actionIcon]="'create-outline'" [errors]="data.validationErrors"
+    (articleSubmit)="onSubmit($event)" [actionLabel]="'Update'"></app-article-form>
+
+  <app-spinner [condition]="data.isSubmitting || data.isLoading" [overlay]="true"></app-spinner>
+</ng-container>
+
+<app-spinner [condition]="!(data$ | async)" [overlay]="true"></app-spinner>
