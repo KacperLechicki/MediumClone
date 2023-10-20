@@ -4,6 +4,8 @@
   <app-alert *ngIf="data.error" [type]="'danger'" [content]="data.error"></app-alert>
 
   <div *ngIf="data.feed">
+    <app-paginator [total]="data.feed.articlesCount" [limit]="limit" [url]="baseUrl"
+      [currentPage]="currentPage"></app-paginator>
     <app-article *ngFor="let article of data.feed.articles" [data]="article"></app-article>
     <app-paginator [total]="data.feed.articlesCount" [limit]="limit" [url]="baseUrl"
       [currentPage]="currentPage"></app-paginator>

@@ -4,9 +4,13 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
-import { selectCurrentUser } from 'src/app/auth/store/reducers';
+import {
+  selectCurrentUser,
+  selectIsLoading,
+} from 'src/app/auth/store/reducers';
 import { SideMenuComponent } from '../../templates/side-menu/side-menu.component';
 import { SpinnerComponent } from '../../templates/spinner/spinner.component';
+import { authActions } from 'src/app/auth/store/actions';
 
 @Component({
   selector: 'app-topbar',
@@ -24,7 +28,12 @@ import { SpinnerComponent } from '../../templates/spinner/spinner.component';
 export class TopbarComponent {
   protected data$ = combineLatest({
     currentUser: this.store.select(selectCurrentUser),
+    isLoading: this.store.select(selectIsLoading),
   });
 
   constructor(private store: Store) {}
+
+  protected onLogout(): void {
+    this.store.dispatch(authActions.logout());
+  }
 }

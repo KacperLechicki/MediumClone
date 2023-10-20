@@ -8,7 +8,7 @@
           </div>
 
           <div class="form-container__body">
-            <form [formGroup]="form" (keyup.enter)="onSubmit()">
+            <form [formGroup]="form" (keydown.enter)="$event.preventDefault(); handleEnterKey()">
               <app-input [type]="'text'" [placeholder]="'Title'" [formGroup]="form" [controlName]="'title'"
                 [clearable]="true" [icon]="'pencil-outline'"></app-input>
               <app-input [type]="'text'" [placeholder]="'Description'" [formGroup]="form" [controlName]="'description'"

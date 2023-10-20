@@ -9,26 +9,26 @@
           </ng-container>
 
           <ng-container *ngIf="data.currentUser">
-            <li class="nav-item">
-              <a routerLink="/articles/new" class="nav-link">
+            <li class="nav-item" routerLink="/articles/new">
+              <a class="nav-link">
                 <ion-icon name="create-outline"></ion-icon>
                 <span>New Post</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a routerLink="/settings" class="nav-link">
+            <li class="nav-item" routerLink="/settings">
+              <a class="nav-link">
                 <ion-icon name="settings-outline"></ion-icon>
                 <span>Settings</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a [routerLink]="['/profiles', data.currentUser.username]" class="nav-link">
+            <li class="nav-item" [routerLink]="['/profiles', data.currentUser.username]">
+              <a class="nav-link">
 
                 <img class="user-pic" [src]="data.currentUser.image" loading="lazy" />
                 <span>{{data.currentUser.username}}</span>
               </a>
             </li>
-            <li class="nav-item mobile">
+            <li class="nav-item mobile" (click)="onLogout()">
               <a class="nav-link">
                 <ion-icon name="exit-outline"></ion-icon>
                 <span>Log Out</span>
@@ -36,13 +36,13 @@
             </li>
           </ng-container>
           <ng-container *ngIf="data.currentUser === null">
-            <li class="nav-item">
-              <a routerLink="/login" class="nav-link">
+            <li class="nav-item" routerLink="/login">
+              <a class="nav-link">
                 <span>Sign in</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a routerLink="/register" class="nav-link">
+            <li class="nav-item" routerLink="/register">
+              <a class="nav-link">
                 <span>Sign up</span>
               </a>
             </li>
@@ -51,9 +51,9 @@
 
         <div class="short">
           <ng-container *ngIf="data.currentUser || data.currentUser === null">
-            <li class="nav-item">
-              <a class="nav-link" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <li class="nav-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+              <a class="nav-link" class="navbar-toggler">
                 <ion-icon name="menu-outline"></ion-icon>
               </a>
             </li>
@@ -62,6 +62,7 @@
       </ul>
     </div>
   </nav>
+  <app-spinner [condition]="data.isLoading" [overlay]="true"></app-spinner>
 </ng-container>
 
 <app-side-menu [name]="'offcanvasNavbar'" [title]="'Menu'" *ngIf="data$ | async as data">
@@ -86,7 +87,7 @@
         </a>
       </li>
       <li class="nav-item mobile">
-        <a class="nav-link">
+        <a class="nav-link" (click)="onLogout()">
           <ion-icon name="exit-outline"></ion-icon>
           <span>Log Out</span>
         </a>
@@ -95,18 +96,19 @@
   </ng-container>
   <ng-container *ngIf="data.currentUser === null">
     <ul class="mobile-menu-content">
-      <li class="nav-item mobile">
-        <a routerLink="/login" class="nav-link">
+      <li class="nav-item mobile" routerLink="/login">
+        <a class="nav-link">
           <ion-icon name="arrow-forward-outline"></ion-icon>
           <span>Sign in</span>
         </a>
       </li>
-      <li class="nav-item mobile">
-        <a routerLink="/register" class="nav-link">
+      <li class="nav-item mobile" routerLink="/register">
+        <a class="nav-link">
           <ion-icon name="arrow-forward-outline"></ion-icon>
           <span>Sign up</span>
         </a>
       </li>
     </ul>
+    <app-spinner [condition]="data.isLoading" [overlay]="true"></app-spinner>
   </ng-container>
 </app-side-menu>

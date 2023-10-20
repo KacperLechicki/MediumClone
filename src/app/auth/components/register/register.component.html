@@ -14,7 +14,7 @@
             </div>
 
             <div class="form-container__body">
-              <form [formGroup]="form" (keyup.enter)="submit()">
+              <form [formGroup]="form" (keydown.enter)="$event.preventDefault(); handleEnterKey()">
                 <app-input [type]="'text'" [placeholder]="'Username'" [formGroup]="form" [controlName]="'username'"
                   [clearable]="true" [icon]="'person-outline'"></app-input>
                 <app-input [type]="'email'" [placeholder]="'Email'" [formGroup]="form" [controlName]="'email'"

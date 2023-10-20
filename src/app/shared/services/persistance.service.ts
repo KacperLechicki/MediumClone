@@ -21,4 +21,12 @@ export class PersistanceService {
       return null;
     }
   }
+
+  public remove(key: string): void {
+    try {
+      localStorage.removeItem(key);
+    } catch (e) {
+      console.error('Error while getting from localStorage', e);
+    }
+  }
 }

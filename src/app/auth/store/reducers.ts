@@ -71,6 +71,31 @@ const authFeature = createFeature({
     ),
 
     on(
+      authActions.logout,
+      (state: AuthStateInterface): AuthStateInterface => ({
+        ...state,
+        isLoading: true,
+      })
+    ),
+
+    on(
+      authActions.logoutSuccess,
+      (state: AuthStateInterface, action): AuthStateInterface => ({
+        ...state,
+        isLoading: false,
+        currentUser: null,
+      })
+    ),
+
+    on(
+      authActions.logoutFailure,
+      (state: AuthStateInterface, action): AuthStateInterface => ({
+        ...state,
+        isLoading: false,
+      })
+    ),
+
+    on(
       authActions.getCurrentUser,
       (state: AuthStateInterface): AuthStateInterface => ({
         ...state,
@@ -109,4 +134,5 @@ export const {
   selectIsSubmitting,
   selectCurrentUser,
   selectValidationErrors,
+  selectIsLoading,
 } = authFeature;

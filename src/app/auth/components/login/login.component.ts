@@ -69,4 +69,12 @@ export class LoginComponent implements OnInit {
     this.resetFlag = true;
     this.form.reset();
   }
+
+  protected handleEnterKey(): void {
+    if (this.form.valid) {
+      this.submit();
+    } else {
+      this.reset();
+    }
+  }
 }
