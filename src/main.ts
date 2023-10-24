@@ -13,6 +13,7 @@ import { provideEffects } from '@ngrx/effects';
 import * as feedEffects from 'src/app/shared/components/feed/store/effects';
 import * as authEffects from 'src/app/auth/store/effects';
 import * as popularTagsEffects from 'src/app/shared/components/popular-tags/store/effects';
+import * as addtoFavoritesEffects from 'src/app/shared/components/favorite/store/effects';
 import { authInterceptor } from './app/shared/interceptors/authInterceptor';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import {
@@ -36,6 +37,11 @@ bootstrapApplication(AppComponent, {
     provideState(feedFeatureKey, feedReducer),
     provideState(popularTagsFeatureKey, popularTagsReducer),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideEffects(authEffects, feedEffects, popularTagsEffects),
+    provideEffects(
+      authEffects,
+      feedEffects,
+      popularTagsEffects,
+      addtoFavoritesEffects
+    ),
   ],
 });
