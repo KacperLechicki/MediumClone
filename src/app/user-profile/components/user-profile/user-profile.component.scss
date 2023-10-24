@@ -1,0 +1,117 @@
+@import 'src/styles/_variables.scss';
+@import 'src/styles/_mixins.scss';
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+  padding: 25px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    -55deg,
+    rgba($palette-dark-blue, 0.15),
+    rgba($palette-dark-blue, 0.15) 10px,
+    rgba($palette-mid-blue, 0.15) 10px,
+    rgba($palette-mid-blue, 0.15) 20px
+  );
+  border-radius: $border-radius;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .row {
+      width: 100%;
+
+      .user-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: $gap;
+        margin-bottom: $gap-sm;
+        width: 100%;
+
+        .user-img {
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .username {
+          font-size: 2.4rem;
+          font-weight: bold;
+        }
+
+        .bio-container {
+          width: clamp(250px, 80%, 800px);
+          max-height: 250px;
+          overflow-x: hidden;
+          overflow-y: auto;
+
+          p {
+            max-height: 100%;
+            white-space: no-wrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+        }
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: $gap-sm;
+      }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+
+  .nav-item {
+    background: none;
+    border: none;
+    border-radius: $border-radius;
+
+    .nav-link {
+      padding: 0 15px 15px 15px;
+      color: $white;
+      transition: color 0.1s, border-bottom 0.1s;
+
+      &.active {
+        color: $palette-light-blue;
+        border-bottom: 2px solid $palette-light-blue;
+      }
+
+      &:hover {
+        color: $palette-light-blue;
+        border-bottom: 2px solid $palette-light-blue;
+      }
+    }
+  }
+}
+
+.feed-toggler {
+  margin: 0px 10px 20px 0;
+  padding: 0 15px 0 0;
+  border-bottom: 1px solid rgba($color: $white, $alpha: 0.15);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  @include button;
+}
+
+.button-return {
+  margin-bottom: 15px;
+}

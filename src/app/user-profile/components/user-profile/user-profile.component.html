@@ -1,0 +1,53 @@
+<button class="button button-return" [routerLink]="['/']">
+  <ion-icon name="arrow-back-outline"></ion-icon>
+  <span>Back</span>
+</button>
+
+<ng-container *ngIf="data$ | async as data">
+  <div class="profile-page" *ngIf="data.userProfile">
+    <div class="user-info banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-10 user-data">
+            <img [src]="data.userProfile.image" alt="user image" class="user-img" loading="lazy">
+            <h4 class="username">{{data.userProfile.username}}</h4>
+            <div class="bio-container">
+              <p class="bio">{{data.userProfile.bio}}</p>
+            </div>
+          </div>
+          <div class="buttons">
+            <a *ngIf="data.isCurrentUserProfile" class="settings-link button" routerLink="/settings">
+              Edit profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <div class="feed-toggler">
+            <ul class="nav outline active">
+              <li class="nav-item">
+                <a [routerLink]="['/profiles', data.userProfile.username]" class="nav-link" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}" queryParamsHandling="merge">My
+                  posts</a>
+              </li>
+              <li class="nav-item">
+                <a [routerLink]="['/profiles', data.userProfile.username, 'favorites']" class="nav-link"
+                  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                  queryParamsHandling="merge">Favorites</a>
+              </li>
+            </ul>
+          </div>
+          <app-feed [apiUrl]="getApiUrl()"></app-feed>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-spinner [condition]="data.isLoading" [overlay]="true"></app-spinner>
+</ng-container>
+
+<app-spinner [condition]="!(data$ | async)" [overlay]="true"></app-spinner>
