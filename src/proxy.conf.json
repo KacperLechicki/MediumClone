@@ -1,0 +1,7 @@
+{
+  "/api/*": {
+    "target": "https://api.realworld.io/api",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

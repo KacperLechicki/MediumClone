@@ -1,0 +1,39 @@
+<ng-container *ngIf="data$ | async as data">
+  <button class="button button-return mb-5" [routerLink]="['/']">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    <span>Back</span>
+  </button>
+
+  <div class="settings-page" *ngIf="currentUser">
+    <div class="container page">
+      <div class="row mb-5">
+        <div class="col-md-6 offset-md-3 col-xs-12">
+          <h1 class="text-center text-xl mb-5">Settings</h1>
+          <app-alert *ngIf="data.validationErrors" [type]="'danger'" [content]="data.validationErrors"></app-alert>
+          <form [formGroup]="form" (keydown.enter)="$event.preventDefault(); handleEnterKey()">
+            <app-input [type]="'text'" [placeholder]="'URL or profile picture'" [formGroup]="form"
+              [controlName]="'image'" [clearable]="true" [icon]="'image-outline'"></app-input>
+            <app-input [type]="'text'" [placeholder]="'Username'" [formGroup]="form" [controlName]="'username'"
+              [clearable]="true" [icon]="'person-outline'"></app-input>
+            <app-textarea [placeholder]="'Short bio about you'" [formGroup]="form" [controlName]="'bio'"
+              [clearable]="true" [icon]="'pencil-outline'"></app-textarea>
+            <app-input [type]="'email'" [placeholder]="'E-mail'" [formGroup]="form" [controlName]="'email'"
+              [clearable]="true" [icon]="'at-circle-outline'"></app-input>
+            <app-input [type]="'password'" [placeholder]="'New password'" [formGroup]="form" [controlName]="'password'"
+              [clearable]="true" [icon]="'key-outline'"></app-input>
+
+            <div class="buttons mb-5">
+              <app-button [label]="'Reset'" [icon]="'close-outline'" [style]="'error-pill'" class="button"
+                [isDisabled]="data.isSubmitting" (btnClick)="reset()"></app-button>
+              <app-button [label]="'Update profile'" [icon]="'create-outline'" [style]="'pill'" (btnClick)="onSubmit()"
+                class="button" [isDisabled]="form.invalid || data.isSubmitting"></app-button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-spinner [condition]="data.isSubmitting" [overlay]="true"></app-spinner>
+</ng-container>
+
+<app-spinner [condition]="!(data$ | async)" [overlay]="true"></app-spinner>

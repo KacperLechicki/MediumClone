@@ -94,12 +94,14 @@ export const loginEffect = createEffect(
 export const logoutEffect = createEffect(
   (
     actions$ = inject(Actions),
-    persistanceService = inject(PersistanceService)
+    persistanceService = inject(PersistanceService),
+    router = inject(Router)
   ) => {
     return actions$.pipe(
       ofType(authActions.logout),
       switchMap(() => {
         persistanceService.remove('accessToken');
+        router.navigate(['/login']);
         return of(authActions.logoutSuccess());
       }),
       catchError(() => {
@@ -135,12 +137,17 @@ export const redirectAfterLoginEffect = createEffect(
 );
 
 export const updateCurrentUserEffect = createEffect(
-  (actions$ = inject(Actions), authService = inject(AuthService)) => {
+  (
+    actions$ = inject(Actions),
+    authService = inject(AuthService),
+    router = inject(Router)
+  ) => {
     return actions$.pipe(
       ofType(authActions.updateCurrentUser),
       switchMap(({ currentUserRequest }) => {
         return authService.updateCurrentUser(currentUserRequest).pipe(
           map((currentUser: CurrentUserInterface) => {
+            router.navigate(['/']);
             return authActions.updateCurrentUserSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
