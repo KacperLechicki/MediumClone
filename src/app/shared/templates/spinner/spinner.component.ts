@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-spinner',
@@ -8,7 +8,17 @@ import { Component, Input } from '@angular/core';
   templateUrl: './spinner.component.html',
   styleUrls: ['./spinner.component.scss'],
 })
-export class SpinnerComponent {
+export class SpinnerComponent implements OnChanges {
   @Input() condition!: boolean | null;
   @Input() overlay!: boolean;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['condition'] && changes['condition'].currentValue === true) {
+      this.scrollToTop();
+    }
+  }
+
+  private scrollToTop(): void {
+    window.scrollTo(0, 0);
+  }
 }

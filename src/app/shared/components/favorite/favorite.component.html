@@ -1,0 +1,4 @@
+<button (click)="handleLike()" [ngClass]="{'btn-def': true, 'btn-liked': isFavorite, 'btn-unliked': !isFavorite}">
+  <ion-icon name="heart-outline"></ion-icon>
+  <span>&nbsp; {{favoritesCount}}</span>
+</button>

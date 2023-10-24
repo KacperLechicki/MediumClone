@@ -12,7 +12,10 @@
         <span class="date">{{data.createdAt | date: 'dd-MM-yyyy'}}</span>
       </div>
     </div>
-    <div class="favorite"><ion-icon name="heart-outline"></ion-icon></div>
+    <div class="favorite">
+      <app-favorite [isFavorite]="data.favorited" [articleSlug]="data.slug"
+        [favoritesCount]="data.favoritesCount"></app-favorite>
+    </div>
   </div>
   <a [routerLink]="['/articles', data.slug]" class="preview-link">
     <h1 class="title">{{data.title}}</h1>
